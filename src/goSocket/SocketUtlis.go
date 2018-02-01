@@ -3,7 +3,8 @@ package goSocket
 import (
 	"net"
 	"encoding/binary"
-	"main/utils"
+
+	"utils"
 )
 
 func sendMessage(conn net.Conn,string string) {

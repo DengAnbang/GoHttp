@@ -1,10 +1,11 @@
 package goSocket
 
 import (
-	"main/utils"
+
 	"net"
 	"fmt"
 	"os"
+	"utils"
 )
 
 func GoSocket(host, port string) {
@@ -15,7 +16,7 @@ func GoSocket(host, port string) {
 	}
 	defer netListen.Close()
 	for {
-		utils.Loge("等待连接")
+		utils.Loge("等待连接1")
 		conn, err := netListen.Accept()
 		if err != nil {
 			continue

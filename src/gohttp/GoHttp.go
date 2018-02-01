@@ -3,7 +3,7 @@ package gohttp
 import (
 	"net/http"
 	"log"
-	"main/utils"
+	"utils"
 )
 
 func GoHttp(host, port string)  {

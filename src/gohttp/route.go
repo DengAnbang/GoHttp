@@ -3,23 +3,20 @@ package gohttp
 import (
 	"net/http"
 	"encoding/json"
-	"main/utils"
-	"os"
+
+	"utils"
+	"html/template"
+	"fmt"
 )
 
 func MainRoute(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	file, i := os.Open("layout.html")
-	defer file.Close()
-	buf := make([]byte, 1024)
-	for {
-		n, _ := file.Read(buf)
-		if n == 0 {
-			break
-		}
-		w.Write(buf)
+	t, err := template.ParseFiles("src/main/templates/layout.html")
+	if err != nil {
+		fmt.Fprintf(w, "parse template error: %s", err.Error())
+		return
 	}
-	utils.Loge(i)
+	t.Execute(w, nil)
 }
 func UserRoute(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
